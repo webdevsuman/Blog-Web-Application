@@ -1,0 +1,58 @@
+<!-- Header -->
+<%- include("partials/header.ejs") %>
+
+<!-- Edit Post -->
+<% if (locals.postId) { %>
+
+<h1 class="">Edit Post</h1>
+<form action="/update" method="post">
+  <input
+    class="form-control"
+    type="text"
+    name="title"
+    placeholder="Title"
+    value="<%= storedTitle %>"
+    required
+  />
+  <textarea
+    class="form-control"
+    name="content"
+    id="content"
+    cols="30"
+    rows="5"
+    placeholder="Content"
+    style="resize: none"
+  >
+<%= storedContent %></textarea
+  >
+  <input hidden type="text" name="index" value="<%= postId %>" />
+  <div class="text-end m-1">
+    <input
+      class="btn btn-light fs-5 btn-lg my-4 button-rad"
+      type="submit"
+      value="Update Post"
+    />
+  </div>
+</form>
+
+<% } else { %>
+
+<!-- New Post Creation Form -->
+<h1>Compose</h1>
+<form class="" action="/compose" method="post">
+  <div class="form-group">
+    <label>Title</label>
+    <input class="form-control" type="text" name="postTitle" />
+    <label>Post</label>
+    <textarea
+      class="form-control"
+      name="postBody"
+      cols="30"
+      rows="5"
+    ></textarea>
+  </div>
+  <button class="btn btn-primary" type="submit" name="button">Publish</button>
+</form>
+<% } %>
+<!-- Footer -->
+<%- include("partials/footer.ejs") %>

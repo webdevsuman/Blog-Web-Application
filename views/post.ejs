@@ -1,0 +1,29 @@
+<%- include("partials/header.ejs") %>
+
+<!-- Post in view -->
+<h2><%= storedTitle %></h2>
+<p><%= storedContent %></p>
+
+<!-- Edit button -->
+<a href="/edit/<%= postId %>"
+  ><input
+    style="width: 85%"
+    class="btn btn-outline-primary fs-5 btn-lg my-2 button-rad"
+    type="button"
+    value="Edit"
+/></a>
+
+<!-- Delete Button -->
+<form action="/delete" method="post">
+  <input type="text" name="postId" hidden value="<%= postId %>" />
+  <input
+    style="width: 85%"
+    class="btn btn-outline-danger fs-5 btn-lg my-2 button-rad"
+    type="submit"
+    name="delete"
+    value="Delete"
+  />
+</form>
+
+<!-- Footer -->
+<%- include("partials/footer.ejs") %>
